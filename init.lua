@@ -755,20 +755,35 @@ require('lazy').setup({
     end,
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1001, -- Make sure to load this before all the other start plugins.
-  },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
+    config = function()
+      require('catppuccin').setup {
+        flavour = 'auto', -- latte, frappe, macchiato, mocha
+        background = { -- :h background
+          light = 'latte',
+          dark = 'frappe',
+        },
+      }
+      local ToggleDarkMode = function()
+        local current_bg = vim.o.background
+        if current_bg == 'dark' then
+          vim.cmd 'set background=light'
+        else
+          vim.cmd 'set background=dark'
+        end
+      end
+      vim.keymap.set('n', '<leader>dm', ToggleDarkMode, { desc = 'Toggle [d]ark [m]ode' })
+      if os.getenv 'darkmode' == 'true' then
+        vim.cmd 'set background=dark'
+      elseif os.getenv 'darkmode' == 'false' then
+        vim.cmd 'set background=light'
+      end
+    end,
     init = function()
-      vim.cmd.colorscheme 'catppuccin-latte'
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 
