@@ -245,7 +245,7 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     config = function()
       local prDiff = function()
-        vim.cmd 'Gvdiffsplit origin/main...HEAD'
+        vim.cmd 'leftabove Gvdiffsplit origin/main...HEAD'
       end
       local prReview = function()
         vim.cmd 'Git difftool --name-only origin/main...HEAD'
