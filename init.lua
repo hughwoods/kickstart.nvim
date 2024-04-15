@@ -241,7 +241,19 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-  { 'tpope/vim-fugitive' },
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      local prDiff = function()
+        vim.cmd 'Gvdiffsplit origin/main...HEAD'
+      end
+      local prReview = function()
+        vim.cmd 'Git difftool --name-only origin/main...HEAD'
+      end
+      vim.keymap.set('n', 'df', prDiff, { desc = 'View [d]i[f]f against main branch' })
+      vim.api.nvim_create_user_command('Review', prReview, { desc = 'Pull request review' })
+    end,
+  },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
