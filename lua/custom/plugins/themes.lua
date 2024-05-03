@@ -30,5 +30,4 @@ local catppuccin =
       vim.cmd.colorscheme 'catppuccin'
     end,
   }
-
 return { catppuccin }

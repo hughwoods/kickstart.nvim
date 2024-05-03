@@ -1,5 +1,6 @@
 local telescope = { -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
+  lazy = true,
   event = 'VimEnter',
   branch = '0.1.x',
   dependencies = {
@@ -79,7 +80,7 @@ local telescope = { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sG', extensions.live_grep_args.live_grep_args, { desc = '[S]earch by [G]rep with arguments' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-    vim.keymap.set('n', '<leader>sa', builtin.builtin, { desc = '[S]earch [A]ll telescope options' })
+    vim.keymap.set('n', '<leader>sa', builtin.commands, { desc = '[S]earch [A]ctions' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>th', builtin.colorscheme, { desc = '[T][h]eme selector' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
