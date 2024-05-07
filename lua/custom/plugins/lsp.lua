@@ -2,6 +2,10 @@ local lspconfig = { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
   lazy = true,
   cmd = { 'LspInfo', 'LspStart' },
+  keys = {
+      { "<leader>ls", "<cmd>LspStart<cr>", desc = "[L]SP [S]tart" },
+      { "<leader>li", "<cmd>LspInfo<cr>", desc = "[L]SP [I]nfo" },
+  },
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     'williamboman/mason.nvim',
