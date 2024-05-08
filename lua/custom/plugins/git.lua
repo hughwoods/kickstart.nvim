@@ -7,7 +7,7 @@ local fugitive = {
       local prReview = function()
         vim.cmd 'Git difftool --name-only origin/main...HEAD'
       end
-      vim.keymap.set('n', 'df', prDiff, { desc = 'View [d]i[f]f against main branch' })
+      vim.keymap.set('n', '<leader>df', prDiff, { desc = 'View [d]i[f]f against main branch' })
       vim.api.nvim_create_user_command('Review', prReview, { desc = 'Pull request review' })
     end,
   }
