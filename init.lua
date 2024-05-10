@@ -12,6 +12,10 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Don't add new lines to the end of files
+-- reduces commit noise
+vim.opt.fixendofline = false
+
 -- Make relative line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
