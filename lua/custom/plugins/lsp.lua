@@ -38,18 +38,10 @@ local lspconfig = { -- LSP Configuration & Plugins
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        local omnisharpExtended = function(func1, func2)
-          if vim.lsp.get_active_clients()[1].name == 'omnisharp' then
-            return func1
-          else
-            return func2
-          end
-        end
-
-        local definitions = omnisharpExtended(require('omnisharp_extended').telescope_lsp_definition, require('telescope.builtin').lsp_definitions)
-        local references = omnisharpExtended(require('omnisharp_extended').telescope_lsp_references, require('telescope.builtin').lsp_references)
-        local implementations = omnisharpExtended(require('omnisharp_extended').telescope_lsp_type_definition, require('telescope.builtin').lsp_implementations)
-        local typeDefinition = omnisharpExtended(require('omnisharp_extended').telescope_lsp_definition, require('telescope.builtin').lsp_type_definitions)
+        local definitions = require('omnisharp_extended').telescope_lsp_definition
+        local references = require('omnisharp_extended').telescope_lsp_references
+        local implementations = require('omnisharp_extended').telescope_lsp_type_definition
+        local typeDefinition = require('omnisharp_extended').telescope_lsp_definition
 
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
