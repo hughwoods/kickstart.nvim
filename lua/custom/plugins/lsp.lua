@@ -40,8 +40,8 @@ local lspconfig = { -- LSP Configuration & Plugins
 
         local definitions = require('omnisharp_extended').telescope_lsp_definition
         local references = require('omnisharp_extended').telescope_lsp_references
-        local implementations = require('omnisharp_extended').telescope_lsp_type_definition
-        local typeDefinition = require('omnisharp_extended').telescope_lsp_definition
+        local implementations = require('omnisharp_extended').telescope_lsp_implementation
+        local typeDefinition = require('omnisharp_extended').telescope_lsp_type_definition
 
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
