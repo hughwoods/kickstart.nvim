@@ -6,6 +6,7 @@ local lspconfig = { -- LSP Configuration & Plugins
   keys = {
     { '<leader>ls', '<cmd>LspStart<cr>', desc = '[L]SP [S]tart' },
     { '<leader>li', '<cmd>LspInfo<cr>', desc = '[L]SP [I]nfo' },
+    { '<leader>lw', vim.lsp.buf.add_workspace_folder, desc = '[L]SP Add [W]orkspace' },
   },
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
