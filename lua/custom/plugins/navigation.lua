@@ -2,23 +2,24 @@ local nvimtree = {
   'nvim-tree/nvim-tree.lua',
   enabled = true,
   version = '*',
-  lazy = false,
+  lazy = true,
+  keys = {
+    { '<leader>e', '<cmd>lua require("nvim-tree.api").tree.focus()<cr>', desc = 'Open file [E]xplorer' },
+    { '<C-n>', '<cmd>lua require("nvim-tree.api").tree.toggle()<cr>', desc = 'Toggle file explorer' },
+  },
   dependencies = {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
     require('nvim-tree').setup {
-    view = {
-      width = 40,
-      side = 'right',
-    },
-    filters = {
-      dotfiles = false,
-    },
-  }
-    local nvt = require 'nvim-tree.api'
-    vim.keymap.set('n', '<leader>e', nvt.tree.focus, { desc = 'Open file [E]xplorer' })
-    vim.keymap.set('n', '<C-n>', nvt.tree.toggle, { desc = 'Toggle file explorer' })
+      view = {
+        width = 40,
+        side = 'right',
+      },
+      filters = {
+        dotfiles = false,
+      },
+    }
   end,
 }
 
