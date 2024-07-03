@@ -54,7 +54,7 @@ local lspconfig = { -- LSP Configuration & Plugins
 
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
-        map('gi', implementations, '[G]oto [I]mplementation')
+        map('gI', implementations, '[G]oto [I]mplementation')
 
         -- Jump to the type of the word under your cursor.
         --  Useful when you're not sure what type a variable is and you want to see

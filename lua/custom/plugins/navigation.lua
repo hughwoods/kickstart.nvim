@@ -4,7 +4,7 @@ local nvimtree = {
   version = '*',
   lazy = true,
   keys = {
-    { '<leader>e', '<cmd>lua require("nvim-tree.api").tree.focus()<cr>', desc = 'Open file [E]xplorer' },
+    { '<leader>e', '<cmd>lua require("nvim-tree.api").tree.find_file({ update_root = false, open = true, focus = true, })<cr>', desc = 'Open file [E]xplorer' },
     { '<C-n>', '<cmd>lua require("nvim-tree.api").tree.toggle()<cr>', desc = 'Toggle file explorer' },
   },
   dependencies = {

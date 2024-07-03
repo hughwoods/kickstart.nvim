@@ -19,7 +19,7 @@ vim.keymap.set('n', '<leader>sa', vscode 'workbench.action.showCommands', { desc
 -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', 'gd', vscode 'editor.action.revealDefinition', { desc = '[G]oto [D]efinition' })
 vim.keymap.set('n', 'gr', vscode 'editor.action.goToReferences', { desc = '[G]oto [R]eferences' })
-vim.keymap.set('n', 'gi', vscode 'editor.action.goToImplementation', { desc = '[G]oto [I]mplementation' })
+vim.keymap.set('n', 'gI', vscode 'editor.action.goToImplementation', { desc = '[G]oto [I]mplementation' })
 vim.keymap.set('n', '<leader>gt', vscode 'editor.action.goToTypeDefinition', { desc = '[G]oto [T]ype Definition' })
 -- vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols, { desc = '[D]ocument [S]ymbols' })
 -- vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, { desc = '[W]orkspace [S]ymbols' })
