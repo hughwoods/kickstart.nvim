@@ -1,4 +1,14 @@
 local omnisharp_extended = 'Hoffs/omnisharp-extended-lsp.nvim'
+
+local lsp_toggle = {
+      'adoyle-h/lsp-toggle.nvim',
+      opts = {
+        create_cmds = true, -- Whether to create user commands
+        telescope = true,  -- Whether to load telescope extensions
+      },
+      cmd = { 'ToggleLSP' }
+    }
+
 local lspconfig = { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
   lazy = true,
@@ -184,4 +194,4 @@ local lspconfig = { -- LSP Configuration & Plugins
   end,
 }
 
-return { lspconfig, omnisharp_extended }
+return { lspconfig, omnisharp_extended, lsp_toggle }
