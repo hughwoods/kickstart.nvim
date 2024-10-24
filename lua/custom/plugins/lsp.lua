@@ -160,6 +160,11 @@ local lspconfig = { -- LSP Configuration & Plugins
         },
       },
       omnisharp = {},
+      azure_pipelines_ls = {},
+      vacuum = {
+        filetypes = {'yaml'}
+      },
+      marksman = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -176,6 +181,7 @@ local lspconfig = { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
       'omnisharp', -- C#
+      'marksman', -- markdown
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
