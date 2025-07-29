@@ -5,6 +5,9 @@ local conform = { -- Autoformat
     notify_on_error = false,
     formatters_by_ft = {
       lua = { 'stylua' },
+      cs = { 'csharpier' },
+      json = { 'prettier' },
+      md = { 'prettier' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
@@ -21,6 +24,14 @@ local conform = { -- Autoformat
         require('conform').format { async = true, lsp_fallback = true }
       end,
       desc = '[F]or[m]at file',
+      id = 'conform_format',
+    },
+    {
+      '<leader>fM',
+      function()
+        require('conform').format { async = true, lsp_fallback = false }
+      end,
+      desc = '[F]or[M]at file without LSP fallback',
       id = 'conform_format',
     },
   },

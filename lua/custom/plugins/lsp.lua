@@ -1,17 +1,8 @@
 local omnisharp_extended = 'Hoffs/omnisharp-extended-lsp.nvim'
 
-local lsp_toggle = {
-      'adoyle-h/lsp-toggle.nvim',
-      opts = {
-        create_cmds = true, -- Whether to create user commands
-        telescope = true,  -- Whether to load telescope extensions
-      },
-      cmd = { 'ToggleLSP' }
-    }
-
 local lspconfig = { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
-  lazy = true,
+  lazy = false,
   cmd = { 'LspInfo', 'LspStart' },
   keys = {
     { '<leader>ls', '<cmd>LspStart<cr>', desc = '[L]SP [S]tart' },
@@ -160,11 +151,35 @@ local lspconfig = { -- LSP Configuration & Plugins
         },
       },
       omnisharp = {},
-      azure_pipelines_ls = {},
+      yamlls = {
+        settings = {
+          yaml = {
+            keyOrdering = false,
+            format = {
+              enable = true,
+            },
+            validate = true,
+            schemas = {
+              ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/refs/heads/main/service-schema.json"] = {
+                "[Pp]ipelines/**/*.yml",
+                ".azdo/**/*.yml",
+              },
+              ["C:\\git\\cpi\\asos-customer-profile-identity-architecture\\.asos\\backstage-yaml-validation\\catalog-info-schema.json"] = {
+                "**/catalog-info*.yaml",
+              },
+              ["https://raw.githubusercontent.com/asyncapi/spec-json-schemas/refs/heads/master/schemas/3.0.0.json"] = {
+                "**/asyncapi.yaml",
+              },
+            },
+          },
+        },
+      },
       vacuum = {
-        filetypes = {'yaml'}
+        filetypes = { 'yaml' }
       },
       marksman = {},
+      prettier = {},
+      csharpier = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -179,9 +194,13 @@ local lspconfig = { -- LSP Configuration & Plugins
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format Lua code
-      'omnisharp', -- C#
-      'marksman', -- markdown
+      'stylua',    -- Used to format Lua code
+      'lua_ls',
+      'omnisharp', -- C# langauge server
+      'csharpier', -- C# formatter
+      'prettier', -- json formatter
+      'marksman',  -- markdown
+      'yamlls',   -- yaml
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -198,6 +217,18 @@ local lspconfig = { -- LSP Configuration & Plugins
       },
     }
   end,
+}
+
+local lsp_toggle = {
+  'adoyle-h/lsp-toggle.nvim',
+  opts = {
+    create_cmds = true,     -- Whether to create user commands
+    telescope = true,       -- Whether to load telescope extensions
+  },
+  cmd = { 'ToggleLSP' },
+  keys = {
+    { '<leader>lt', '<cmd>ToggleLSP<cr>', desc = '[L]SP [T]oggle' },
+  },
 }
 
 return { lspconfig, omnisharp_extended, lsp_toggle }
