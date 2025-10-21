@@ -134,7 +134,8 @@ local lspconfig = { -- LSP Configuration & Plugins
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       -- tsserver = {},
-      --
+
+      ts_ls = {},
 
       lua_ls = {
         -- cmd = {...},
@@ -164,7 +165,7 @@ local lspconfig = { -- LSP Configuration & Plugins
                 "[Pp]ipelines/**/*.yml",
                 ".azdo/**/*.yml",
               },
-              ["C:\\git\\cpi\\asos-customer-profile-identity-architecture\\.asos\\backstage-yaml-validation\\catalog-info-schema.json"] = {
+              ["C:\\git\\asos-customer-profile-identity-architecture\\.asos\\backstage-yaml-validation\\catalog-info-schema.json"] = {
                 "**/catalog-info*.yaml",
               },
               ["https://raw.githubusercontent.com/asyncapi/spec-json-schemas/refs/heads/master/schemas/3.0.0.json"] = {
@@ -201,6 +202,7 @@ local lspconfig = { -- LSP Configuration & Plugins
       'prettier', -- json formatter
       'marksman',  -- markdown
       'yamlls',   -- yaml
+      'bicep',   -- bicep language server
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
